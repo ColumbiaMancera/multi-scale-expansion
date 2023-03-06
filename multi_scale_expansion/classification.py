@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import time
 import copy
 
+
 def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer, scheduler, num_epochs=25):
     since = time.time()
 
@@ -21,9 +22,9 @@ def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer,
 
         for phase in ['train', 'test']:
             if phase == 'train':
-                model.train() 
+                model.train()
             else:
-                model.eval()  
+                model.eval()
 
             running_loss = 0.0
             running_corrects = 0
@@ -56,12 +57,12 @@ def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer,
 
             epoch_loss = running_loss / dataset_sizes[phase]
             epoch_acc = running_corrects.double() / dataset_sizes[phase]
-            if phase == "train": 
-              train_losses.append(epoch_loss)
-              train_accuracies.append(epoch_acc)
-            else: 
-              val_losses.append(epoch_loss)
-              val_accuracies.append(epoch_acc)
+            if phase == "train":
+                train_losses.append(epoch_loss)
+                train_accuracies.append(epoch_acc)
+            else:
+                val_losses.append(epoch_loss)
+                val_accuracies.append(epoch_acc)
 
             print(f'{phase} Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}')
 
@@ -79,16 +80,17 @@ def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer,
     model.load_state_dict(best_model_wts)
     return model, train_losses, train_accuracies, val_losses, val_accuracies
 
+
 def save_learning_curve(train_loss_list, train_miou_list, val_loss_list, val_miou_list):
-    epochs = np.arange(1, len(train_loss_list)+1)
+    epochs = np.arange(1, len(train_loss_list) + 1)
     plt.figure()
     lr_curve_plot = plt.plot(epochs, train_loss_list, color='navy', label="train_loss")
     plt.plot(epochs, train_miou_list, color='teal', label="train_mIoU")
     plt.plot(epochs, val_loss_list, color='orange', label="val_loss")
     plt.plot(epochs, val_miou_list, color='gold', label="val_mIoU")
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.0)
     plt.xticks(epochs, epochs)
-    plt.yticks(np.arange(10)*0.1, [f"0.{i}" for i in range(10)])
+    plt.yticks(np.arange(10) * 0.1, [f"0.{i}" for i in range(10)])
     plt.xlabel('epoch')
     plt.ylabel('mIoU')
     plt.grid(True)
