@@ -136,28 +136,20 @@ def test_train_model():  # mock_dir, mock_transforms
     mock_datasets = get_datasets(mock_dir, mock_transforms)
     mock_dataset_sizes = {x: len(mock_datasets[x]) for x in ['train', 'test']}
     mock_dataloaders = get_dataloaders(mock_datasets)
-    assert True
 
-    # model, train_losses, train_accuracies, val_losses, val_accuracies = train_model(
-    #     device,
-    #     mock_dataset_sizes,
-    #     mock_dataloaders,
-    #     mock_model,
-    #     mock_criterion,
-    #     mock_optimizer,
-    #     mock_lr_scheduler,
-    #     num_epochs=1,
-    # )
-    # assert isinstance(model, nn.Module)
-    # assert isinstance(train_losses, list)
-    # assert isinstance(train_accuracies, list)
-    # assert isinstance(val_losses, list)
-    # assert isinstance(val_accuracies, list)
-
-
-# |
-# |
-# V
-# mock_train_loss_list, mock_train_miou_list, mock_val_loss_list, mock_val_miou_list
-def test_save_learning_curve():
-    assert True
+    model, train_losses, train_accuracies, val_losses, val_accuracies = train_model(
+        device,
+        mock_dataset_sizes,
+        mock_dataloaders,
+        mock_model,
+        mock_criterion,
+        mock_optimizer,
+        mock_lr_scheduler,
+        num_epochs=1,
+        testing=True
+    )
+    assert isinstance(model, nn.Module)
+    assert isinstance(train_losses, list)
+    assert isinstance(train_accuracies, list)
+    assert isinstance(val_losses, list)
+    assert isinstance(val_accuracies, list)

@@ -5,7 +5,7 @@ import time
 import copy
 
 
-def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer, scheduler, num_epochs=25):
+def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer, scheduler, num_epochs=25, testing = False):
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
@@ -69,6 +69,9 @@ def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer,
             if phase == 'test' and epoch_acc > best_acc:
                 best_acc = epoch_acc
                 best_model_wts = copy.deepcopy(model.state_dict())
+
+            if testing: 
+                break
 
         print()
 
