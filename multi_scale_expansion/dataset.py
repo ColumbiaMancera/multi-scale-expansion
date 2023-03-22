@@ -76,7 +76,7 @@ class PlantDataset(torch.utils.data.Dataset):
 
             return image, label
         except Exception as exc:
-            return None
+            return exc
 
 
 def collate_fn(batch):

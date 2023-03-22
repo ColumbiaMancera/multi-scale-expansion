@@ -84,7 +84,7 @@ def train_model(device, dataset_sizes, dataloaders, model, criterion, optimizer,
 def save_learning_curve(train_loss_list, train_miou_list, val_loss_list, val_miou_list):
     epochs = np.arange(1, len(train_loss_list) + 1)
     plt.figure()
-    lr_curve_plot = plt.plot(epochs, train_loss_list, color='navy', label="train_loss")
+    plt.plot(epochs, train_loss_list, color='navy', label="train_loss")
     plt.plot(epochs, train_miou_list, color='teal', label="train_mIoU")
     plt.plot(epochs, val_loss_list, color='orange', label="val_loss")
     plt.plot(epochs, val_miou_list, color='gold', label="val_mIoU")

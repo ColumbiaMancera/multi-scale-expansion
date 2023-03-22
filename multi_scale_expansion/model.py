@@ -1,5 +1,4 @@
 import torch.nn as nn
-from torchvision import models
 import torch.optim as optim
 from torch.optim import lr_scheduler
 
