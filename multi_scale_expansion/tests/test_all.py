@@ -146,7 +146,7 @@ def test_train_model():  # mock_dir, mock_transforms
         mock_optimizer,
         mock_lr_scheduler,
         num_epochs=1,
-        testing=True
+        testing=True,
     )
     assert isinstance(model, nn.Module)
     assert isinstance(train_losses, list)
