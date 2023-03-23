@@ -4,6 +4,7 @@ from unittest.mock import patch
 import torch
 import torch.nn as nn
 from torchvision import transforms, models
+from torchvision.datasets import FakeData
 
 
 ## Tests related to our Dataset
@@ -48,8 +49,7 @@ class TestDataset(unittest.TestCase):
             assert isinstance(ds[1], torch.utils.data.Dataset)
 
     def test_get_dataloaders_fn(self):  # mock_datasets
-        mock_dir = "/Users/angelmancera/Columbia/Classes/Spring_2023/Open_Src_Dev/Taiwan_Tomato_Leaves"
-        mock_transforms = {
+        data_transforms = {
             'train': transforms.Compose(
                 [
                     transforms.RandomResizedCrop(224),
@@ -67,8 +67,10 @@ class TestDataset(unittest.TestCase):
                 ]
             ),
         }
-        mock_datasets = get_datasets(mock_dir, mock_transforms)
-
+        mock_datasets = {
+            "train": FakeData(num_classes=6, transform=data_transforms["train"]),
+            "test": FakeData(num_classes=6, transform=data_transforms["test"]),
+        }
         dataloaders = get_dataloaders(mock_datasets)
         for dl in dataloaders.values():
             assert isinstance(dl, torch.utils.data.DataLoader)
@@ -114,7 +116,6 @@ def test_train_model():  # mock_dir, mock_transforms
         mock_model, mock_lr, mock_momentum, mock_step_size, mock_gamma
     )
 
-    mock_dir = "/Users/angelmancera/Columbia/Classes/Spring_2023/Open_Src_Dev/Taiwan_Tomato_Leaves"
     mock_transforms = {
         'train': transforms.Compose(
             [
@@ -133,7 +134,10 @@ def test_train_model():  # mock_dir, mock_transforms
             ]
         ),
     }
-    mock_datasets = get_datasets(mock_dir, mock_transforms)
+    mock_datasets = {
+        "train": FakeData(num_classes=6, transform=mock_transforms["train"]),
+        "test": FakeData(num_classes=6, transform=mock_transforms["test"]),
+    }
     mock_dataset_sizes = {x: len(mock_datasets[x]) for x in ['train', 'test']}
     mock_dataloaders = get_dataloaders(mock_datasets)
 
