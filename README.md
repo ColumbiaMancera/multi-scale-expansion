@@ -1,5 +1,6 @@
 # Multi Scale Expansion
 Repository to create framework for image classification computer vision models in tensorflow. <br>
+[![PyPI](https://img.shields.io/pypi/v/multi-scale-expansion)](https://pypi.org/project/multi-scale-expansion/)
 ![image](https://img.shields.io/pypi/l/tensorflow)
 ![image](https://img.shields.io/github/issues/ColumbiaMancera/multi-scale-expansion)
 ![Build Status](https://github.com/ColumbiaMancera/multi-scale-expansion/actions/workflows/build.yml/badge.svg)
