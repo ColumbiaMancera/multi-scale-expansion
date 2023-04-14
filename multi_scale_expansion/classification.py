@@ -8,6 +8,35 @@ import copy
 def train_model(
     device, dataset_sizes, dataloaders, model, criterion, optimizer, scheduler, num_epochs=25, testing=False
 ):
+    """
+    Train and fine-tune previously auto-generated model.
+
+    :param device: To work allow PyTorch to work with GPU.
+    :type kind: torch.device
+    :param dataset_sizes: Stores the dataset sizes for the training and test data.
+    :type kind: dict()
+    :param dataloaders: 2 dataloaders containing the training and testing data.
+    :type kind: torch.utils.data.DataLoader
+    :param model: The model to train.
+    :type kind: torch.nn.Module
+    :param criterion: Loss function.
+    :type kind: function, torch.nn.CrossEntropyLoss().
+    :param optimizer: Optimization algorithm choice.
+    :type kind: torch.optim.Optimizer()
+    :param scheduler: Modifies learning rate gradually with training.
+    :type kind: torch.optim.lr_scheduler.*
+    :param num_epochs: Epochs to train on.
+    :type kind: int
+    :param testing: Whether we are testing the function or running it normally.
+    :type kind: boolean
+
+    :return model: Trained model.
+    :rtype: torch.nn.Module
+    :return train/val_losses: Per epoch train and val losses
+    :rtype: list()
+    :return train/val_accuracies: Per epoch train and val accuracies
+    :rtype: list()
+    """
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
@@ -87,6 +116,18 @@ def train_model(
 
 
 def save_learning_curve(train_loss_list, train_miou_list, val_loss_list, val_miou_list):
+    """
+    This method converts loss and accuracy lists into an actual plot.
+
+    :param train_loss_list: List of losses per epoch on train set.
+    :type kind: list()
+    :param val_loss_list: List of losses per epoch on val set.
+    :type kind: list()
+    :param train_miou_list: List of accuracies per epoch on train set.
+    :type kind: list()
+    :param val_miou_list: List of accuracies per epoch on val set.
+    :type kind: list()
+    """
     epochs = np.arange(1, len(train_loss_list) + 1)
     plt.figure()
     plt.plot(epochs, train_loss_list, color='navy', label="train_loss")
