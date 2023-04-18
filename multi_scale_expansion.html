@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>multi_scale_expansion package &mdash; multi-scale-expansion 0.1.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Quick-Start Example" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            multi-scale-expansion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Quick-Start Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">multi_scale_expansion package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-multi_scale_expansion.classification">multi_scale_expansion.classification module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.classification.save_learning_curve"><code class="docutils literal notranslate"><span class="pre">save_learning_curve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.classification.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-multi_scale_expansion.dataset">multi_scale_expansion.dataset module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.dataset.PlantDataset"><code class="docutils literal notranslate"><span class="pre">PlantDataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multi_scale_expansion.dataset.PlantDataset.get_class_names"><code class="docutils literal notranslate"><span class="pre">PlantDataset.get_class_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi_scale_expansion.dataset.PlantDataset.get_image_filenames_with_labels"><code class="docutils literal notranslate"><span class="pre">PlantDataset.get_image_filenames_with_labels()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.dataset.collate_fn"><code class="docutils literal notranslate"><span class="pre">collate_fn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.dataset.get_dataloaders"><code class="docutils literal notranslate"><span class="pre">get_dataloaders()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.dataset.get_datasets"><code class="docutils literal notranslate"><span class="pre">get_datasets()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-multi_scale_expansion.model">multi_scale_expansion.model module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.model.get_plant_model"><code class="docutils literal notranslate"><span class="pre">get_plant_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi_scale_expansion.model.get_train_loss_needs"><code class="docutils literal notranslate"><span class="pre">get_train_loss_needs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-multi_scale_expansion">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">multi-scale-expansion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">multi_scale_expansion package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/multi_scale_expansion.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multi-scale-expansion-package">
+<h1>multi_scale_expansion package<a class="headerlink" href="#multi-scale-expansion-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-multi_scale_expansion.classification">
+<span id="multi-scale-expansion-classification-module"></span><h2>multi_scale_expansion.classification module<a class="headerlink" href="#module-multi_scale_expansion.classification" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="multi_scale_expansion.classification.save_learning_curve">
+<span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.classification.</span></span><span class="sig-name descname"><span class="pre">save_learning_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_loss_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_miou_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loss_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_miou_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.classification.save_learning_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method converts loss and accuracy lists into an actual plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_loss_list</strong> – List of losses per epoch on train set.</p></li>
+<li><p><strong>val_loss_list</strong> – List of losses per epoch on val set.</p></li>
+<li><p><strong>train_miou_list</strong> – List of accuracies per epoch on train set.</p></li>
+<li><p><strong>val_miou_list</strong> – List of accuracies per epoch on val set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multi_scale_expansion.classification.train_model">
+<span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.classification.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_sizes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataloaders</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheduler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.classification.train_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train and fine-tune previously auto-generated model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – To work allow PyTorch to work with GPU.</p></li>
+<li><p><strong>dataset_sizes</strong> – Stores the dataset sizes for the training and test data.</p></li>
+<li><p><strong>dataloaders</strong> – 2 dataloaders containing the training and testing data.</p></li>
+<li><p><strong>model</strong> – The model to train.</p></li>
+<li><p><strong>criterion</strong> – Loss function.</p></li>
+<li><p><strong>optimizer</strong> – Optimization algorithm choice.</p></li>
+<li><p><strong>scheduler</strong> – Modifies learning rate gradually with training.</p></li>
+<li><p><strong>num_epochs</strong> – Epochs to train on.</p></li>
+<li><p><strong>testing</strong> – Whether we are testing the function or running it normally.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return model<span class="colon">:</span></dt>
+<dd class="field-even"><p>Trained model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.nn.Module</p>
+</dd>
+<dt class="field-even">Return train/val_losses<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per epoch train and val losses</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list()</p>
+</dd>
+<dt class="field-even">Return train/val_accuracies<span class="colon">:</span></dt>
+<dd class="field-even"><p>Per epoch train and val accuracies</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list()</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-multi_scale_expansion.dataset">
+<span id="multi-scale-expansion-dataset-module"></span><h2>multi_scale_expansion.dataset module<a class="headerlink" href="#module-multi_scale_expansion.dataset" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="multi_scale_expansion.dataset.PlantDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.dataset.</span></span><span class="sig-name descname"><span class="pre">PlantDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_transform</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.dataset.PlantDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<p>Collects Generalizable Dataset from strict directory structure.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="multi_scale_expansion.dataset.PlantDataset.get_class_names">
+<span class="sig-name descname"><span class="pre">get_class_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.dataset.PlantDataset.get_class_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a directory of images, underneath which we have directories of class
+names, collect all these class names and return as a list of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>images_dir</strong> – Path to directory containing images.</p>
+</dd>
+<dt class="field-even">Return class_names<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of unique class names.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="multi_scale_expansion.dataset.PlantDataset.get_image_filenames_with_labels">
+<span class="sig-name descname"><span class="pre">get_image_filenames_with_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.dataset.PlantDataset.get_image_filenames_with_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all image filenames for files containing proper images of our dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images_dir</strong> – Path to directory containing images.</p></li>
+<li><p><strong>class_names</strong> – List of unique class names.</p></li>
+<li><p><strong>class_labels</strong> – Maps to idx of class name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list()</p>
+</dd>
+<dt class="field-odd">Return image_files<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Literally it’s the image file paths.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list()</p>
+</dd>
+<dt class="field-odd">Return labels<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Labels for each of the images.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list()</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multi_scale_expansion.dataset.collate_fn">
+<span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.dataset.</span></span><span class="sig-name descname"><span class="pre">collate_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.dataset.collate_fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Properly collates images into mini-batches for specific task and from a particular batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>batch</strong> – batch of images and labels.</p>
+</dd>
+<dt class="field-even">Return images<span class="colon">:</span></dt>
+<dd class="field-even"><p>Image after applying transform.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+<dt class="field-even">Return labels<span class="colon">:</span></dt>
+<dd class="field-even"><p>LongTensor of labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.LongTensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multi_scale_expansion.dataset.get_dataloaders">
+<span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.dataset.</span></span><span class="sig-name descname"><span class="pre">get_dataloaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_datasets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.dataset.get_dataloaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Now take the datasets and make them dataloaders with specificed params.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image_datasets</strong> – Actual torch train and test datasets.</p>
+</dd>
+<dt class="field-even">Return dataloaders<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataloaders from Datasets.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict() containing DataLoaders.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multi_scale_expansion.dataset.get_datasets">
+<span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.dataset.</span></span><span class="sig-name descname"><span class="pre">get_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_transforms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.dataset.get_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create train and test dataset into a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_dir</strong> – Directory path of data folder.</p></li>
+<li><p><strong>data_transforms</strong> – Transformations to apply to images.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return images<span class="colon">:</span></dt>
+<dd class="field-even"><p>Image after applying transform.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-multi_scale_expansion.model">
+<span id="multi-scale-expansion-model-module"></span><h2>multi_scale_expansion.model module<a class="headerlink" href="#module-multi_scale_expansion.model" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="multi_scale_expansion.model.get_plant_model">
+<span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.model.</span></span><span class="sig-name descname"><span class="pre">get_plant_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.model.get_plant_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train and fine-tune previously auto-generated model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – The model to build on.</p></li>
+<li><p><strong>class_names</strong> – Classes for classification task.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return model<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model with additional classification layer.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.nn.Module</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="multi_scale_expansion.model.get_train_loss_needs">
+<span class="sig-prename descclassname"><span class="pre">multi_scale_expansion.model.</span></span><span class="sig-name descname"><span class="pre">get_train_loss_needs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_ft</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#multi_scale_expansion.model.get_train_loss_needs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train and fine-tune previously auto-generated model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_ft</strong> – The actual model.</p></li>
+<li><p><strong>lr</strong> – Learning rate.</p></li>
+<li><p><strong>momentum</strong> – Momentum parameter to be specified.</p></li>
+<li><p><strong>step_size</strong> – step_size</p></li>
+<li><p><strong>gamma</strong> – Gamma value to be specified for lr_scheduler.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return criterion<span class="colon">:</span></dt>
+<dd class="field-even"><p>Trained model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>function, nn.CrossEntropyLoss()</p>
+</dd>
+<dt class="field-even">Return optimizer_ft<span class="colon">:</span></dt>
+<dd class="field-even"><p>The defined optimizer.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.optim.SGD</p>
+</dd>
+<dt class="field-even">Return exp_lr_scheduler<span class="colon">:</span></dt>
+<dd class="field-even"><p>Defined learning rate scheduler</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.optim.lr_scheduler.StepLR</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-multi_scale_expansion">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-multi_scale_expansion" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="examples.html" class="btn btn-neutral float-left" title="Quick-Start Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Angel Mancera.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
