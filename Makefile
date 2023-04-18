@@ -111,7 +111,7 @@ pages:
 	rm -rf $(TMPREPO)
 	git clone -b gh-pages git@github.com:ColumbiaMancera/multi-scale-expansion.git $(TMPREPO)
 	rm -rf $(TMPREPO)/*
-	cp -r docs/_build/html/* $(TMPREPO)
+	cp -r docs/build/html/* $(TMPREPO)
 	cd $(TMPREPO);\
 	git add -A ;\
 	git commit -a -m 'auto-updating docs' ;\
