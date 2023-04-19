@@ -5,6 +5,7 @@ Repository to create framework for image classification computer vision models i
 ![image](https://img.shields.io/github/issues/ColumbiaMancera/multi-scale-expansion)
 ![Build Status](https://github.com/ColumbiaMancera/multi-scale-expansion/actions/workflows/build.yml/badge.svg)
 [![codecov](https://codecov.io/gh/ColumbiaMancera/multi-scale-expansion/branch/main/graph/badge.svg)](https://codecov.io/gh/ColumbiaMancera/multi-scale-expansion)
+[![Docs](https://img.shields.io/badge/docs-passing-success)](https://columbiamancera.github.io/multi-scale-expansion/)
 
 ## Overview
 `multi-scale-expansion` is a library for automating the set up of an image classification model. The user provides their data, and the library creates and trains a ready-to-use model to complete the image classification task and apply it to any image further. The objective is that this framework can be automated and applied for recognizing whether a plant is healthy or not, through the use of the models we train. 
