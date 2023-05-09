@@ -1,8 +1,6 @@
 import torch
 from torchvision import transforms, models
-from model import get_train_loss_needs, get_plant_model
-from dataset import get_dataloaders, get_datasets
-from classification import train_model, setup_classification_model
+from classification import setup_classification_model
 
 
 data_transforms = {
