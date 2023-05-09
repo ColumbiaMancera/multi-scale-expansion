@@ -1,8 +1,8 @@
 import torch
-import numpy as np
-import matplotlib.pyplot as plt
 import time
 import copy
+from . import dataset as ms_ds
+from . import model as ms_model
 
 
 def train_model(
@@ -115,30 +115,69 @@ def train_model(
     return model, train_losses, train_accuracies, val_losses, val_accuracies
 
 
-def save_learning_curve(train_loss_list, train_miou_list, val_loss_list, val_miou_list):
+def setup_classification_model(
+    device,
+    ds_path,
+    model,
+    transforms,
+    mock_datasets=None,
+    lr=0.001,
+    momentum=0.9,
+    step_size=7,
+    gamma=0.1,
+    epochs=15,
+    testing=False,
+):
     """
-    This method converts loss and accuracy lists into an actual plot.
+    Set up dataset and return trained model and info.
 
-    :param train_loss_list: List of losses per epoch on train set.
-    :type kind: list()
-    :param val_loss_list: List of losses per epoch on val set.
-    :type kind: list()
-    :param train_miou_list: List of accuracies per epoch on train set.
-    :type kind: list()
-    :param val_miou_list: List of accuracies per epoch on val set.
-    :type kind: list()
+    :param ds_path: Path containing ds with train and test dirs.
+    :type kind: str()
+    :param model: Model that we'd like to adapt for our classification purposes.
+    :type kind: torch.nn.Module
+    :param transforms: Transformations to apply on train and test data, depend on model.
+    :type kind: dict() containing torchvision.transforms.Compose() as values
+    :param lr: Learning rate.
+    :type kind: float()
+    :param momentum: Momentum hyperparameter.
+    :type kind: float()
+    :param step_size: Step size hyperparameter for scheduler.
+    :type kind: int()
+    :param gamma: Gamma hyperparameter.
+    :type kind: float()
+    :param num_epochs: Epochs to train on.
+    :type kind: int
+    :param testing: Whether we are testing the function or running it normally.
+    :type kind: boolean
+
+    :return model: Trained model.
+    :rtype: torch.nn.Module
+    :return train/val_losses: Per epoch train and val losses
+    :rtype: list()
+    :return train/val_accuracies: Per epoch train and val accuracies
+    :rtype: list()
     """
-    epochs = np.arange(1, len(train_loss_list) + 1)
-    plt.figure()
-    plt.plot(epochs, train_loss_list, color='navy', label="train_loss")
-    plt.plot(epochs, train_miou_list, color='teal', label="train_mIoU")
-    plt.plot(epochs, val_loss_list, color='orange', label="val_loss")
-    plt.plot(epochs, val_miou_list, color='gold', label="val_mIoU")
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.0)
-    plt.xticks(epochs, epochs)
-    plt.yticks(np.arange(10) * 0.1, [f"0.{i}" for i in range(10)])
-    plt.xlabel('epoch')
-    plt.ylabel('mIoU')
-    plt.grid(True)
-    plt.savefig('learning_curve.png', bbox_inches='tight')
-    plt.show()
+
+    datasets = ms_ds.get_datasets(ds_path, transforms)
+    class_names = datasets["train"].class_labels.values()
+    if testing:
+        datasets = mock_datasets
+        class_names = list(range(6))
+    dataset_sizes = {x: len(datasets[x]) for x in ['train', 'test']}
+    dataloaders = ms_ds.get_dataloaders(datasets)
+
+    new_model = ms_model.get_plant_model(model, class_names)  # list(range(6))
+
+    criterion, optimizer, lr_scheduler = ms_model.get_train_loss_needs(new_model, lr, momentum, step_size, gamma)
+
+    return train_model(
+        device,
+        dataset_sizes,
+        dataloaders,
+        new_model,
+        criterion,
+        optimizer,
+        lr_scheduler,
+        num_epochs=epochs,
+        testing=testing,
+    )
