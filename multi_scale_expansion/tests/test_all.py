@@ -157,3 +157,42 @@ def test_train_model():  # mock_dir, mock_transforms
     assert isinstance(train_accuracies, list)
     assert isinstance(val_losses, list)
     assert isinstance(val_accuracies, list)
+
+
+# Another integration test for the full setup function
+def test_setup_classification_model():  # mock_dir, mock_transforms
+    mock_dir = "/Users/angelmancera/Columbia/Classes/Spring_2023/Open_Src_Dev/Taiwan_Tomato_Leaves"
+    mock_transforms = {
+        'train': transforms.Compose(
+            [
+                transforms.RandomResizedCrop(224),
+                transforms.RandomHorizontalFlip(),
+                transforms.ToTensor(),
+                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+            ]
+        ),
+        'test': transforms.Compose(
+            [
+                transforms.Resize(256),
+                transforms.CenterCrop(224),
+                transforms.ToTensor(),
+                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+            ]
+        ),
+    }
+    mock_datasets = {
+        "train": FakeData(num_classes=6, transform=mock_transforms["train"]),
+        "test": FakeData(num_classes=6, transform=mock_transforms["test"]),
+    }
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    mock_model = models.resnet18(weights='DEFAULT')
+
+    result_model, train_losses, train_accuracies, val_losses, val_accuracies = setup_classification_model(
+        device, mock_dir, mock_model, mock_transforms, mock_datasets=mock_datasets, epochs=1, testing=True
+    )
+
+    assert isinstance(result_model, nn.Module)
+    assert isinstance(train_losses, list)
+    assert isinstance(train_accuracies, list)
+    assert isinstance(val_losses, list)
+    assert isinstance(val_accuracies, list)
